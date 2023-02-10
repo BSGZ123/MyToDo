@@ -5,9 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:MyToDo"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
-        WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="768" Width="1280"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        TextElement.FontSize="13"
+        TextElement.FontWeight="Regular"
+        FontFamily="微软雅黑"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        WindowStyle="None"
+        mc:Ignorable="d">
     <materialDesign:DialogHost
         DialogTheme="Inherit"  x:Name="DialogHost"
         Identifier="Root" >
@@ -67,7 +75,7 @@
                     materialDesign:ShadowAssist.ShadowDepth="Depth2"
                     DockPanel.Dock="Top"
                     Mode="PrimaryMid">
-                    <DockPanel LastChildFill="True">
+                    <DockPanel LastChildFill="True"> <!--三个（缩小，放大，退出）按钮样式实现 最后一个元素停止填充-->
                         <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
                             <Button
                                 x:Name="btnMin"
@@ -83,11 +91,11 @@
                                 Style="{StaticResource MaterialDesignFlatMidBgButton}" />
                         </StackPanel>
 
-                        <materialDesign:PopupBox DockPanel.Dock="Right">
+                        <materialDesign:PopupBox DockPanel.Dock="Right"> <!--用户头像（圆角裁剪）-->
                             <materialDesign:PopupBox.ToggleContent>
                                 <Image
-                                Width="25"
-                                Height="25"
+                                Width="30"
+                                Height="30"
                                 Source="/Images/user.png">
                                     <Image.Clip>
                                         <EllipseGeometry
@@ -99,7 +107,7 @@
                             </materialDesign:PopupBox.ToggleContent>
 
                             <StackPanel>
-                                <!--<Button Command="{Binding AppCenterCommand}" Content="个人中心"/>-->
+                                <Button Command="{Binding AppCenterCommand}" Content="个人中心"/>
                                 <Button Command="{Binding LoginOutCommand}" Content="注销当前账户"/>
                             </StackPanel>
                         </materialDesign:PopupBox>
