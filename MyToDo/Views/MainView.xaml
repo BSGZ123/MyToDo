@@ -6,6 +6,8 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:prism="http://prismlibrary.com/"
         xmlns:local="clr-namespace:MyToDo"
+        xmlns:ext="clr-namespace:MyToDo.Extensions" xmlns:viewmodels="clr-namespace:MyToDo.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         prism:ViewModelLocator.AutoWireViewModel="True"
         Title="MainWindow" Height="768" Width="1280"
         AllowsTransparency="True"
@@ -41,17 +43,16 @@
                             HorizontalAlignment="Center"
                             Text="{Binding UserName}" />
                     </StackPanel>
-                    <!--ItemContainerStyle="{StaticResource MyListBoxItemStyle}"-->
                     <ListBox
                         x:Name="menuBar"
-                        
+                        ItemContainerStyle="{StaticResource MyListBoxItemStyle}"
                         ItemsSource="{Binding MenuBars}">
-                        <!--<i:Interaction.Triggers>
+                        <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectionChanged">
                                 <i:InvokeCommandAction Command="{Binding NavigateCommand}" 
                                                        CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ListBox}}" />
                             </i:EventTrigger>
-                        </i:Interaction.Triggers>-->
+                        </i:Interaction.Triggers>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Background="Transparent" Orientation="Horizontal">
@@ -111,8 +112,8 @@
                             </materialDesign:PopupBox.ToggleContent>
 
                             <StackPanel>
-                                <Button Command="{Binding AppCenterCommand}" Content="个人中心"/>
-                                <Button Command="{Binding LoginOutCommand}" Content="注销当前账户"/>
+                                <!--<Button Command="{Binding AppCenterCommand}" Content="个人中心"/>
+                                <Button Command="{Binding LoginOutCommand}" Content="注销当前账户"/>-->
                             </StackPanel>
                         </materialDesign:PopupBox>
 
@@ -156,7 +157,7 @@
                     </DockPanel>
                 </materialDesign:ColorZone>
 
-                <ContentControl Grid.Row="1"  />
+                <ContentControl Grid.Row="1" prism:RegionManager.RegionName="{x:Static ext:PrismManager.MainViewRegionName}" />
             </Grid>
         </materialDesign:DrawerHost>
     </materialDesign:DialogHost>
