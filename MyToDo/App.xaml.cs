@@ -23,7 +23,7 @@ namespace MyToDo
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            
+
         }
     }
 }
